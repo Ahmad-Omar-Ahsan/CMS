@@ -42,7 +42,7 @@ def get_train_valid_loader(
         num_workers=num_workers,
         pin_memory=pin_memory,
     )
-    val_loader = torch._utils.data.DataLoader(
+    val_loader = torch.utils.data.DataLoader(
         val_file,
         batch_size=batch_size,
         shuffle=shuffle,
