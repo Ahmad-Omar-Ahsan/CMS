@@ -10,7 +10,6 @@ from torch.utils.data.sampler import SubsetRandomSampler
 def get_train_valid_loader(
     data_dir,
     batch_size,
- 
     shuffle=True,
     num_workers=4,
     pin_memory=False,
@@ -33,9 +32,9 @@ def get_train_valid_loader(
     - train_loader: training set iterator.
     - valid_loader: validation set iterator.
     """
-    train_file = torch.load(os.path.join(data_dir,'torch_train_dataset'))
-    val_file = torch.load(os.path.join(data_dir,'torch_train_dataset'))
-    
+    train_file = torch.load(os.path.join(data_dir, "torch_train_dataset"))
+    val_file = torch.load(os.path.join(data_dir, "torch_train_dataset"))
+
     train_loader = torch.utils.data.DataLoader(
         train_file,
         batch_size=batch_size,
@@ -48,11 +47,10 @@ def get_train_valid_loader(
         batch_size=batch_size,
         shuffle=shuffle,
         num_workers=num_workers,
-        pin_memory=pin_memory
+        pin_memory=pin_memory,
     )
-    
 
-    return (train_loader,val_loader)
+    return (train_loader, val_loader)
 
 
 def get_test_loader(
@@ -74,13 +72,13 @@ def get_test_loader(
     -------
     - data_loader: test set iterator.
     """
-    test_file = torch.load(os.path.join(data_dir,'torch_test_dataset'))
+    test_file = torch.load(os.path.join(data_dir, "torch_test_dataset"))
     data_loader = torch._utils.data.DataLoader(
         test_file,
         batch_size=batch_size,
         shuffle=shuffle,
         num_workers=num_workers,
-        pin_memory=pin_memory
+        pin_memory=pin_memory,
     )
 
     return data_loader
