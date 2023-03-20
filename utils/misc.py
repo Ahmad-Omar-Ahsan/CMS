@@ -82,7 +82,8 @@ def get_model(model_config: dict) -> nn.Module:
     Returns:
         nn.Module: Model instance.
     """
-    return ConvNext(**model_config)
+    if model_config['type'] == 'ConvNext':
+        return ConvNext(**model_config)
 
 
 def save_model(
