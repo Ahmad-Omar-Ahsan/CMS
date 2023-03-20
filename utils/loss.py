@@ -40,5 +40,5 @@ class LabelSmoothingLoss(nn.Module):
         with torch.no_grad():
             true_dist = torch.zeros_like(pred)
             true_dist.fill_(self.smoothing / (self.cls - 1))
-            true_dist.scatter_(1, target.data.unsqueeze(1), self.confidence)
+            true_dist.scatter_(1, target.data.to(torch.long).unsqueeze(1), self.confidence)
         return torch.mean(torch.sum(-true_dist * pred, dim=self.dim))

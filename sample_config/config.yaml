@@ -1,0 +1,50 @@
+data_dir: archive/torch_dataset
+
+exp:
+    wandb: True
+    wandb_api_key: archive/api_key.txt
+    proj_name: CMS-test
+    exp_dir: ./runs
+    exp_name: Task1-ConvNext
+    device: auto
+    log_freq: 20  # steps
+    log_to_file: False
+    log_to_stdout: True
+    val_freq: 1   # epochs
+    n_workers: 1
+    pin_memory: True
+    cache: 2
+    task: task_1
+entity: saitomar
+
+hparams:
+    restore_ckpt:
+    seed: 0
+    batch_size: 32
+    start_epoch: 0
+    n_epochs: 100
+    l_smooth: 0.1
+    device: auto
+    num_classes: 2
+
+    
+    model:
+        type : ConvNext
+        ConvNext:
+            in_channels : 2
+            stem_features : 64
+            depths : [3, 4, 6]
+            widths : [256, 512, 1024]
+            num_classes : 2
+    optimizer:
+        opt_type: adamw
+        opt_kwargs:
+          lr: 0.005
+          
+    
+    scheduler:
+        n_warmup: 20
+        max_epochs: 100
+        scheduler_type: cosine_annealing
+
+   
