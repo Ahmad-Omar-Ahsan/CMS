@@ -73,7 +73,7 @@ def get_test_loader(
     - data_loader: test set iterator.
     """
     test_file = torch.load(os.path.join(data_dir, "torch_test_dataset"))
-    data_loader = torch._utils.data.DataLoader(
+    data_loader = torch.utils.data.DataLoader(
         test_file,
         batch_size=batch_size,
         shuffle=shuffle,
