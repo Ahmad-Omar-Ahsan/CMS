@@ -45,19 +45,20 @@ def training_pipeline(config):
     #####################################
 
     # data
+    if config['exp']['task'] == 'task_1':
 
-    trainloader, valloader = get_train_valid_loader(
-        data_dir=config["data_dir"],
-        batch_size=config["hparams"]["batch_size"],
-        num_workers=config["exp"]["n_workers"],
-        pin_memory=config["exp"]["pin_memory"],
-    )
-    testloader = get_test_loader(
-        data_dir=config["data_dir"],
-        batch_size=config["hparams"]["batch_size"],
-        num_workers=config["exp"]["n_workers"],
-        pin_memory=config["exp"]["pin_memory"],
-    )
+        trainloader, valloader = get_train_valid_loader(
+            data_dir=config["data_dir"],
+            batch_size=config["hparams"]["batch_size"],
+            num_workers=config["exp"]["n_workers"],
+            pin_memory=config["exp"]["pin_memory"],
+        )
+        testloader = get_test_loader(
+            data_dir=config["data_dir"],
+            batch_size=config["hparams"]["batch_size"],
+            num_workers=config["exp"]["n_workers"],
+            pin_memory=config["exp"]["pin_memory"],
+        )
 
     # model
     model = get_model(config["hparams"]["model"])
