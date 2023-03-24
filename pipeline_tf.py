@@ -45,12 +45,12 @@ def training_pipeline(config):
                   ))
     
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=config['exp']['save_dir'], histogram_freq=1)
-    with tf.device(config['exp']['device']):
+    with tf.device('/device:GPU:0'):
         model.fit(
             train_dataset,
             epochs=config['hparams']['n_epochs'],
             validation_data=val_dataset,
-            callbacks=[tensorboard_callback, WandbCallback]
+            callbacks=[tensorboard_callback]
         )
     model.save(config['exp']['save_dir'])
 

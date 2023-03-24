@@ -64,7 +64,7 @@ class BottleNeckBlock(layers.Layer):
                 layers.BatchNormalization(),
                 layers.Activation(tf.nn.relu),
                 layers.Conv2D(expanded_features, kernel_size=1),
-                layers.Activation(tf.nn.gelu),
+                layers.Activation(tf.nn.relu),
                 # wide -> narrow
                 layers.Conv2D(out_features, kernel_size=1),
             ]

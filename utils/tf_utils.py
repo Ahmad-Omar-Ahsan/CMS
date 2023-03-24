@@ -12,10 +12,10 @@ def load_dataset(config : dict):
 
 def create_tf_dataset(dataset_np, labels_np, batch_size):
     tf_dataset = tf.data.Dataset.from_tensor_slices((dataset_np, labels_np))
-
-    train_size = int(0.8 * len(tf_dataset))
-    val_size = int(0.1 * len(tf_dataset))
-    test_size = len(tf_dataset) - train_size - val_size
+    length_ds = len(dataset_np)
+    train_size = int(0.8 * length_ds)
+    val_size = int(0.1 * length_ds)
+    test_size = length_ds - train_size - val_size
 
 
 

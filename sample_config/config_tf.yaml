@@ -1,0 +1,48 @@
+data_dir: np_dataset
+
+exp:
+    wandb: False
+    wandb_api_key: api_key.txt
+    proj_name: CMS-test
+    exp_dir: ./runs
+    exp_name: Task1-ConvNext-TF
+    device: auto
+    log_freq: 20  # steps
+    log_to_file: False
+    log_to_stdout: True
+    val_freq: 1   # epochs
+    n_workers: 1
+    pin_memory: True
+    cache: 2
+    task: task_1
+entity: saitomar
+
+hparams:
+    restore_ckpt:
+    seed: 0
+    batch_size: 32
+    start_epoch: 0
+    n_epochs: 2
+    device: auto
+    num_classes: 2
+
+    
+    model:
+        type : ConvNext_TF
+        ConvNext_TF:
+            in_channels : 2
+            stem_features : 64
+            depths : [3, 4, 6]
+            widths : [256, 512, 1024]
+      
+    optim:
+        lr : 0.005
+        weight_decay : 0.0000001
+          
+    
+    scheduler:
+        n_warmup: 1
+        max_epochs: 2
+        scheduler_type: cosine_annealing
+
+   
