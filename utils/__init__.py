@@ -1,4 +1,3 @@
-from .loss import LabelSmoothingLoss
 from .misc import seed_everything, save_model, calc_step, log, get_model, count_params
 from .optim import get_optimizer
 from .scheduler import WarmUpLR, get_scheduler
