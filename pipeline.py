@@ -1,7 +1,6 @@
 from argparse import ArgumentParser
 from config_parser import get_config
 
-from utils import LabelSmoothingLoss
 from utils import get_optimizer
 from utils import WarmUpLR, get_scheduler
 from utils import train, evaluate

@@ -5,3 +5,7 @@ archive
 wandb
 runs
 __pycache__
+launch.json
+.vscode
+tf_dataset
+torch_dataset

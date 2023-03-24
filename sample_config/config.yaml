@@ -1,7 +1,7 @@
-data_dir: archive/torch_dataset
+data_dir: torch_dataset
 
 exp:
-    wandb: True
+    wandb: False
     wandb_api_key: archive/api_key.txt
     proj_name: CMS-test
     exp_dir: ./runs
@@ -22,8 +22,7 @@ hparams:
     seed: 0
     batch_size: 32
     start_epoch: 0
-    n_epochs: 100
-    l_smooth: 0.1
+    n_epochs: 2
     device: auto
     num_classes: 2
 
@@ -43,8 +42,8 @@ hparams:
           
     
     scheduler:
-        n_warmup: 20
-        max_epochs: 100
+        n_warmup: 1
+        max_epochs: 2
         scheduler_type: cosine_annealing
 
    

@@ -30,14 +30,14 @@ def train_single_batch(
     """
 
     data, targets = data.to(device), targets.to(device)
-
+    targets = targets.reshape(-1, 1)
     optimizer.zero_grad()
     outputs = net(data)
     loss = criterion(outputs, targets)
     loss.backward()
     optimizer.step()
 
-    correct = outputs.argmax(1).eq(targets).sum()
+    correct = (torch.round(outputs).eq(targets)).sum()
     return loss.item(), correct.item()
 
 
@@ -62,8 +62,9 @@ def evaluate(
 
     for data, targets in tqdm(dataloader):
         data, targets = data.to(device), targets.to(device)
+        targets = targets.reshape(-1,1)
         out = net(data)
-        correct += out.argmax(1).eq(targets).sum().item()
+        correct += (torch.round(out).eq(targets)).sum().item()
         loss = criterion(out, targets)
         running_loss += loss.item()
 
