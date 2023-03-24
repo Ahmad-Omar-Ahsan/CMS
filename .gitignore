@@ -9,3 +9,4 @@ launch.json
 .vscode
 tf_dataset
 torch_dataset
+*.npy
