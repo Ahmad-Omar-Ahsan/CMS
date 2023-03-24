@@ -151,7 +151,8 @@ class ClassificationHead(nn.Sequential):
             nn.AdaptiveAvgPool2d((1, 1)),
             nn.Flatten(1),
             nn.LayerNorm(num_channels),
-            nn.Linear(num_channels, num_classes),
+            nn.Linear(num_channels, 1),
+            nn.Sigmoid()
         )
 
 
