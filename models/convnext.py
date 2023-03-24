@@ -5,8 +5,6 @@ from torch import Tensor
 from typing import List
 
 
-# from torchvision.ops import StochasticDepth
-
 
 class ConvNormAct(nn.Sequential):
     """
@@ -76,7 +74,7 @@ class BottleNeckBlock(nn.Module):
             nn.Conv2d(expanded_features, out_features, kernel_size=1),
         )
         self.layer_scaler = LayerScaler(layer_scaler_init_value, out_features)
-        # self.drop_path = StochasticDepth(drop_p, mode="batch")
+        
 
     def forward(self, x: Tensor) -> Tensor:
         res = x
