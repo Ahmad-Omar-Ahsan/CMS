@@ -66,13 +66,7 @@ def training_pipeline(config):
     print(f"Created model with {count_params(model)} parameters.")
 
     # loss
-    if config["hparams"]["l_smooth"]:
-        criterion = LabelSmoothingLoss(
-            num_classes=config["hparams"]["num_classes"],
-            smoothing=config["hparams"]["l_smooth"],
-        )
-    else:
-        criterion = nn.CrossEntropyLoss()
+    criterion = nn.BCELoss()
 
     # optimizer
     optimizer = get_optimizer(model, config["hparams"]["optimizer"])
