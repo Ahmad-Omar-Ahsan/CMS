@@ -50,7 +50,7 @@ def training_pipeline(config):
             train_dataset,
             epochs=config['hparams']['n_epochs'],
             validation_data=val_dataset,
-            callbacks=[tensorboard_callback]
+            callbacks=[tensorboard_callback, WandbCallback()]
         )
     model.save(config['exp']['save_dir'])
 
